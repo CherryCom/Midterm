@@ -33,7 +33,7 @@ public:
     }
 
 
-    void move(vector<vector<char>>& board) {
+    void move(char board[BOARD_SIZE][BOARD_SIZE]) {
         char direction;
         bool validMove = false;
 
@@ -141,7 +141,7 @@ public:
 
 };
 
-void saveGame(ofstream& file, vector<vector<char>>& board, Player* player1, Player* player2) {
+void saveGame(ofstream& file, char board[BOARD_SIZE][BOARD_SIZE], Player* player1, Player* player2) {
     // Save board state
     for (int i = 0; i < BOARD_SIZE; i++) {
         for (int j = 0; j < BOARD_SIZE; j++) {
@@ -160,7 +160,7 @@ void saveGame(ofstream& file, vector<vector<char>>& board, Player* player1, Play
 
 
 // Display the game board
-void displayBoard(const vector<vector<char>>& board, const Player& player1, const Player& player2) {
+void displayBoard(char board[BOARD_SIZE][BOARD_SIZE] , const Player& player1, const Player& player2) {
     for (int i = 0; i < BOARD_SIZE; i++) {
         for (int j = 0; j < BOARD_SIZE; j++) {
             if (i == player1.x && j == player1.y)
@@ -180,7 +180,7 @@ bool checkGameEnd(Player& player) {
 }
 
 // Generate a random board with different types of squares
-void generateBoard(vector<vector<char>>& board) {
+void generateBoard(char board[BOARD_SIZE][BOARD_SIZE]) {
     srand(static_cast<unsigned>(time(0))); // Seed for randomization
     for (int i = 0; i < BOARD_SIZE; i++) {
         for (int j = 0; j < BOARD_SIZE; j++) {
@@ -196,7 +196,7 @@ void generateBoard(vector<vector<char>>& board) {
 // Main game functiofunction
 void game(bool load) {
     string p1Name, p2Name;
-    vector<vector<char>> board(BOARD_SIZE, vector<char>(BOARD_SIZE));
+    char board[BOARD_SIZE][BOARD_SIZE];
     int p1X = 0, p2X = 7, p1Y = 0, p2Y= 7;
     generateBoard(board);
     if(!load){
