@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "stack.h"  
+#include "stackLinked.h"  
 #include "queue.h"  
-#include "linkedlist.h"  
 #include <fstream> 
 #include <cstdlib> 
 #include <ctime>   
@@ -26,12 +25,11 @@ public:
     int x, y; //location
     int health; // Player's health,
     int jail;
-    Stack<pair<pair<int, int>, pair<char,int>>> moveStack; 
+    StackLinked<pair<pair<int, int>, pair<char,int>>> moveStack; 
 
 
     Player(string playerName, int startX, int startY)
         : name(playerName), x(startX), y(startY), health(10), jail(0) {
-            healthHistory.addNode(health);
     }
 
 
